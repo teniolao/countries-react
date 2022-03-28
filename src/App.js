@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import country from "./countriesAll.json";
+
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+}
+const RenderCountries = (props) => {
+  return props.data.map((country, index) => {
+    return (
+      <div key={index}>
+        <img src={country.flag} alt={country.name} />
+        <h3>{country.name}</h3>
+        <p>Population: {formatNumber(country.population)}</p>
+        <p>Region: {country.region}</p>
+        <p>Capital: {country.capital}</p>
+      </div>
+    );
+  });
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RenderCountries data={country} />
     </div>
   );
 }
