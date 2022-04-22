@@ -1,53 +1,75 @@
+import { useState } from "react";
 import "./App.css";
 import countries from "./countriesAll.json";
-import { useState } from "react";
+import RenderCountries from "./RenderCountries";
 
-
-function formatNumber(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-}
-const RenderCountries = (props) => {
-  return props.countries.map((country, index) => {
-    return (
-      <div key={index} className="singleCountry">
-        <img alt={country.name} src={country.flag}></img>
-        <h3>{country.name}</h3>
-        <p>Population: {formatNumber(country.population)}</p>
-        <p>Region: {country.region}</p>
-        <p>Capital:{country.capital} </p>
-      </div>
-    );
-  });
-};
+let regions = [
+  "Africa",
+  "Americas",
+  "Antarctic",
+  "Asia",
+  "Europe",
+  "Oceania",
+  "Polar",
+];
 
 function App() {
-  const filterCountries = (typedValue) => {
-    return countries.filter((country) => {
-      return (
-        country.name.toLowerCase().includes(typedValue.toLowerCase()) ||
-        country.capital?.toLowerCase().includes(typedValue.toLowerCase())
-      );
-    });
-  };
+  const [countryInput, setCountryInput] = useState("");
+  const [regionPicked, setRegionPicked] = useState("Africa");
 
-  const [arrayOfCountries, setArrayOfCountries] = useState(countries);
+  function selectRegion(event) {
+    setRegionPicked(event.target.value);
+    console.log(event.target.value);
+  }
+
+  function handleCountrySearch(event) {
+    setCountryInput(event.target.value);
+  }
+
+  const filterCountries = countries.filter((country) => {
+    return (
+      (country.name.toLowerCase().includes(countryInput.toLowerCase()) ||
+        country.capital?.toLowerCase().includes(countryInput.toLowerCase())) &&
+      country.region.toLowerCase().includes(regionPicked.toLowerCase())
+    );
+  });
+
   return (
     <div className="App">
-      <p>
-        Search:
+      <div>
         <input
+          placeholder="Search for a  Country..."
           type="text"
-          onChange={(event) => {
-            setArrayOfCountries(filterCountries(event.target.value));
-          }}
+          onChange={handleCountrySearch}
         ></input>
-      </p>
-
-      <div className="flex">
-        <RenderCountries countries={arrayOfCountries} />
+        <select onChange={selectRegion}>
+          {regions.map((region) => {
+            return <option>{region}</option>;
+          })}
+        </select>
       </div>
+
+      <RenderCountries countries={filterCountries} />
     </div>
   );
 }
+
+// const RenderCountriesByRegion = (props) => {
+//   return props.countries.map((country, index) => {
+//     // for(let i=0; i<regions.length; i++)
+//     // if (country.region.includes(value))
+//     return (
+//       <div key={index} className="singleCountry">
+//         <img alt={country.name} src={country.flag}></img>
+//         <div className="card--stats">
+//           <h3>{country.name}</h3>
+//           <p>Population: {formatNumber(country.population)}</p>
+//           <p>Region: {country.region}</p>
+//           <p>Capital:{country.capital} </p>
+//         </div>
+//       </div>
+//     );
+//   });
+// };
 
 export default App;

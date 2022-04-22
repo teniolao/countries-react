@@ -1,0 +1,21 @@
+
+let countries = countries.map(country => {
+    for(let region of regions)
+    if(country.region === )
+})
+
+const [country] = countries
+const {region} = country
+
+let countriesByRegion = regions.filter(region => {
+    if(region === countries) return 
+})
+
+const [Africa, Americas, Antartica, Asia, Europe, Oceania, Polar] = regions
+
+
+two states 
+1. input 
+2. regions
+
+go through countries 
