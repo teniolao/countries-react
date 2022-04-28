@@ -16,9 +16,17 @@ const RenderCountries = (props) => {
         </div>
         <div className="text-container">
           <h3>{country.name}</h3>
-          <p>Population: {formatNumber(country.population)}</p>
-          <p>Region: {country.region}</p>
-          <p>Capital:{country.capital} </p>
+          <p>
+            <span className="bold">Population: </span>
+            {formatNumber(country.population)}
+          </p>
+          <p>
+            <span className="bold">Region: </span> {country.region}
+          </p>
+          <p>
+            <span className="bold">Capital: </span>
+            {country.capital}
+          </p>
         </div>
       </div>
     );
