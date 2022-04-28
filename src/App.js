@@ -19,7 +19,7 @@ function App() {
 
   function selectRegion(event) {
     setRegionPicked(event.target.value);
-    console.log(event.target.value);
+    //console.log(event.target.value);
   }
 
   function handleCountrySearch(event) {
@@ -48,28 +48,11 @@ function App() {
           })}
         </select>
       </div>
-
-      <RenderCountries countries={filterCountries} />
+      <div className= "container">
+        <RenderCountries countries={filterCountries} />
+      </div>
     </div>
   );
 }
-
-// const RenderCountriesByRegion = (props) => {
-//   return props.countries.map((country, index) => {
-//     // for(let i=0; i<regions.length; i++)
-//     // if (country.region.includes(value))
-//     return (
-//       <div key={index} className="singleCountry">
-//         <img alt={country.name} src={country.flag}></img>
-//         <div className="card--stats">
-//           <h3>{country.name}</h3>
-//           <p>Population: {formatNumber(country.population)}</p>
-//           <p>Region: {country.region}</p>
-//           <p>Capital:{country.capital} </p>
-//         </div>
-//       </div>
-//     );
-//   });
-// };
 
 export default App;

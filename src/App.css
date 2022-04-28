@@ -5,23 +5,51 @@
 body {
   margin: 0;
   font-family: "Poppins" sans-serif;
-  background-color: teal;
+  background-color: rgb(231, 232, 232);
   /* height: 100vh;
   width: 100vw; */
 }
 
+.App {
+  margin: 0 2rem;
+}
+
 .card {
-  width: 300px;
-  background-color: lightgrey;
-  display: inline-block;
+  /* width: 300px; */
+  /* background-color: rgb(246, 243, 243); */
   margin: 10px 0;
   margin-right: 4px;
-   /* margin-left: 10px; */
-   border-radius: 10px;
+  /* display: inline-block; */
+
+  /* margin-left: 10px; */
+  /* border-radius: 10px; */
+}
+
+.container {
+  /* display: inline-block; */
+  /* object-fit:cover; */
+  justify-items: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  margin: auto;
+}
+
+.image--container {
+  height: 200px;
+  width: 300px;
+  background-color: white;
 }
 
 .card--image {
-  width: 300px;
+  /* object-fit: cover; */
   height: 200px;
-  border-radius: 10px;
+  width: 300px;
+}
+
+.text-container {
+  background-color: rgb(246, 243, 243);
+  padding: 1rem;
+  width: 300px;
 }
