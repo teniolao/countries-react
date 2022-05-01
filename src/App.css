@@ -1,21 +1,47 @@
+:root {
+  --dark-mode-elements: hsl(209, 23%, 22%);
+  --dark-mode-bg: hsl(207, 26%, 17%);
+}
+
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
+.App {
   font-family: "Poppins" sans-serif;
-  background-color: rgb(248, 248, 248);
-  height: 100vh;
-  width: 100vw;
   font-family: "Nunito Sans", sans-serif;
+}
+
+.App.darkMode {
+  background-color: var(--dark-mode-bg);
 }
 
 .navbar {
   background-color: white;
-  padding: 30px 20px;
-  box-shadow: 0px 3px 3px rgba(166, 163, 163, 0.25);
+  padding: 0.2rem 4.5rem;
+  box-shadow: 0px 1px 1px rgba(62, 58, 90, 0.25);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar.darkMode {
+  background-color: var(--dark-mode-elements);
+  color: #fff;
+}
+
+h4 {
   font-weight: 800;
+}
+
+.background-mode--container {
+  display: flex;
+  margin: auto 0;
+}
+
+.light-mode {
+  margin: 0 1.5rem;
+  border: none;
 }
 
 .body--container {
@@ -28,21 +54,31 @@ body {
   padding: 30px 20px;
 }
 
-input {
+.input {
   border: none;
   width: 200px;
   padding: 15px;
   border-radius: 5px;
+  background-color: transparent;
   box-shadow: 0px 3px 3px rgba(166, 163, 163, 0.25);
 }
 
-select {
+.input.darkMode {
+  color: #fff;
+}
+
+.select {
   border: none;
   width: 200px;
   padding: 12px;
   margin-top: 5px;
   border-radius: 5px;
+  background-color: transparent;
   box-shadow: 0px 3px 3px rgba(166, 163, 163, 0.25);
+}
+
+.select.darkMode {
+  color: #fff;
 }
 
 .card {
@@ -72,8 +108,13 @@ select {
 
 .text-container {
   background-color: rgb(252, 252, 252);
-  padding: 1rem;
+  padding: 0.5rem 1.7rem;
   width: 300px;
+}
+
+.text-container.darkMode {
+  background-color: var(--dark-mode-elements);
+  color: #fff;
 }
 
 .bold {

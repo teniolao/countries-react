@@ -17,6 +17,11 @@ let regions = [
 function App() {
   const [countryInput, setCountryInput] = useState("");
   const [regionPicked, setRegionPicked] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+
+  const switchMode = () => {
+    setDarkMode((prevState) => !prevState);
+  };
 
   function selectRegion(event) {
     setRegionPicked(event.target.value);
@@ -44,24 +49,37 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <nav className="navbar">Where in the world? </nav>
-      <div className="body--container">
-        <section className="search-input--container">
-          <input
-            placeholder="Search for a  Country..."
-            type="text"
-            onChange={handleCountrySearch}
-          ></input>
-          <select onChange={selectRegion} placeholder="Search for a Country...">
-            {regions.map((region) => {
-              return <option>{region}</option>;
-            })}
-          </select>
-        </section>
+    <div className={`App ${darkMode ? "darkMode" : ""}`}>
+      <div>
+        <nav className={`navbar ${darkMode ? "darkMode" : ""}`}>
+          <h4>Where in the world?</h4>
+          <div className="background-mode--container" onClick={switchMode}>
+            <div className="dark-mode">☾ Dark Mode</div>
+          </div>
+        </nav>
 
-        <div className="container">
-          <RenderCountries countries={filterCountries} />
+        <div className="body--container">
+          <section className="search-input--container">
+            <input
+              className={`input ${darkMode ? "darkMode" : ""}`}
+              placeholder="Search for a  Country..."
+              type="text"
+              onChange={handleCountrySearch}
+            ></input>
+            <select
+              className={`select ${darkMode ? "darkMode" : ""}`}
+              onChange={selectRegion}
+              placeholder="Search for a Country..."
+            >
+              {regions.map((region) => {
+                return <option>{region}</option>;
+              })}
+            </select>
+          </section>
+
+          <div className="container">
+            <RenderCountries countries={filterCountries} darkMode={darkMode} />
+          </div>
         </div>
       </div>
     </div>
