@@ -6,7 +6,7 @@ function formatNumber(num) {
 const RenderCountries = ({countries, darkMode}) => {
   return countries.map((country, index) => {
     return (
-      <div className="card">
+      <div key ={index}className="card">
         <div className="image--container">
           <img
             alt={country.name}
