@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const CountryDetails = ({ countries }) => {
+const CountryDetails = ({ countries, darkMode }) => {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -44,8 +44,8 @@ const CountryDetails = ({ countries }) => {
   };
 
   return (
-    <div className="country_details">
-      <button className="back" onClick={goBack}>
+    <div className={`country_details ${darkMode ? "darkMode" : ""}`}>
+      <button className={`back ${darkMode ? "darkMode" : ""}`} onClick={goBack}>
         <p>⇦ Go Back</p>
       </button>
       <div className="country_details_body">
@@ -59,44 +59,44 @@ const CountryDetails = ({ countries }) => {
             <div className="left_info">
               <p>
                 Native Name:
-                <span className="values">{nativeName}</span>
+                <span className="values"> {nativeName}</span>
               </p>
               <p>
                 Population:
-                <span className="values">{population}</span>
+                <span className="values"> {population}</span>
               </p>
               <p>
                 Region:
-                <span className="values">{region}</span>
+                <span className="values"> {region}</span>
               </p>
               <p>
                 Sub region:
-                <span className="values">{subregion}</span>
+                <span className="values"> {subregion}</span>
               </p>
             </div>
 
             <div className="right_info">
               <p>
                 Capital:
-                <span className="values">{capital}</span>
+                <span className="values"> {capital}</span>
               </p>
               <p>
                 Top-level Domain:
-                <span className="values">{topLevelDomain}</span>
+                <span className="values"> {topLevelDomain}</span>
               </p>
               <p>
                 Currencies:
-                <span className="values">{currencies}</span>
+                <span className="values"> {currencies}</span>
               </p>
               <p>
                 Languages:
-                <span className="values">{languages}</span>
+                <span className="values"> {languages}</span>
               </p>
             </div>
           </div>
           Border Countries:
           {borders.map((border) => (
-            <div className="border_country">
+            <div className={`border_country ${darkMode ? "darkMode" : ""}`}>
               <p>{border}</p>
             </div>
           ))}

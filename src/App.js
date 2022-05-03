@@ -95,7 +95,7 @@ function App() {
                     darkMode={darkMode}
                     showDetails={showDetails}
                     name={country.name}
-                    code = {country.alpha3Code}
+                    code={country.alpha3Code}
                     capital={country.capital}
                     population={country.population}
                     region={country.region}
@@ -106,7 +106,12 @@ function App() {
             </div>
           }
         />
-        <Route path="/:countryCode" element={<CountryDetails countries={filterCountries}/>} />
+        <Route
+          path="/:countryCode"
+          element={
+            <CountryDetails darkMode={darkMode} countries={filterCountries} />
+          }
+        />
       </Routes>
     </div>
   );
