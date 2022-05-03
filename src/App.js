@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 import countries from "./countriesAll.json";
 import RenderCountries from "./RenderCountries";
@@ -20,8 +21,7 @@ function App() {
   const [countryInput, setCountryInput] = useState("");
   const [regionPicked, setRegionPicked] = useState("");
   const [darkMode, setDarkMode] = useState(false);
-
-  //const noCountries = countries.status || countries.message;
+  const navigate = useNavigate();
 
   const switchMode = () => {
     setDarkMode((prevState) => !prevState);
@@ -52,6 +52,10 @@ function App() {
     );
   });
 
+  const showDetails = (code) => {
+    navigate(`/${code}`);
+  };
+
   return (
     <div className={`App ${darkMode ? "darkMode" : ""}`}>
       <nav className={`navbar ${darkMode ? "darkMode" : ""}`}>
@@ -79,21 +83,30 @@ function App() {
                   placeholder="Search for a Country..."
                 >
                   {regions.map((region, index) => {
-                    return <option key = {index}>{region}</option>;
+                    return <option key={index}>{region}</option>;
                   })}
                 </select>
               </section>
 
               <div className="container">
-                <RenderCountries
-                  countries={filterCountries}
-                  darkMode={darkMode}
-                />
+                {filterCountries.map((country, index) => (
+                  <RenderCountries
+                    key={country.alpha3Code}
+                    darkMode={darkMode}
+                    showDetails={showDetails}
+                    name={country.name}
+                    code = {country.alpha3Code}
+                    capital={country.capital}
+                    population={country.population}
+                    region={country.region}
+                    flag={country.flag}
+                  />
+                ))}
               </div>
             </div>
           }
         />
-        <Route path="country-details" element={<CountryDetails />} />
+        <Route path="/:countryCode" element={<CountryDetails countries={filterCountries}/>} />
       </Routes>
     </div>
   );
