@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import countries from "./countriesAll.json";
 import RenderCountries from "./RenderCountries";
-import { Routes, Route } from "react-router-dom";
 import CountryDetails from "./CountryDetails";
+import Navbar from "./Navbar";
 
 let regions = [
   "Filter By Region",
@@ -58,12 +59,7 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? "darkMode" : ""}`}>
-      <nav className={`navbar ${darkMode ? "darkMode" : ""}`}>
-        <h4>Where in the world?</h4>
-        <div className="dark-mode-container" onClick={switchMode}>
-          ☾ Dark Mode
-        </div>
-      </nav>
+      <Navbar darkMode={darkMode} switchMode={switchMode} />
 
       <Routes>
         <Route
