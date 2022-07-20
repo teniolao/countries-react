@@ -123,7 +123,7 @@ h4 {
   min-height: 100vh;
 }
 
-.country_details.darkMode{
+.country_details.darkMode {
   color: white;
 }
 
@@ -195,7 +195,7 @@ h4 {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-.border_country.darkMode{
+.border_country.darkMode {
   background-color: var(--dark-mode-elements);
 }
 
